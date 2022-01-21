@@ -49,7 +49,7 @@ class SensorController extends Controller
             $val_trend[] = $item->values["_value"];
         }
 
-
+        $trend = [];
         foreach($val_trend as $i => $item) {
 
             if($i != count($val_trend)-1) {
