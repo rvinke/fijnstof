@@ -15,9 +15,9 @@
         <link rel="shortcut icon" href="/img/favicon.ico" />
 
     </head>
-    <body class="antialiased bg-gray-100 dark:bg-gray-900">
+    <body class="antialiased bg-gray-900 dark:bg-gray-900">
 
-        <div class="py-12">
+        <div class="py-12 bg-gray-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="lg:text-center">
                     <h2 class="py-10 text-base text-2xl text-white font-semibold tracking-wide">Fijnstof in Veenendaal</h2>
