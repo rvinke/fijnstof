@@ -19,24 +19,32 @@
 
         <div class="py-12 bg-gray-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:text-center">
-                    <h2 class="py-10 text-base text-2xl text-white font-semibold tracking-wide">Fijnstof in Veenendaal</h2>
+                <dl class="flex flex-row">
+                    <div class="relative basis-1/4 items-center justify-center h-12 w-12">
+                        <img src="/img/logo.png" style="width: 100px; margin-top: 40px; margin-left: 80px;" />
+                    </div>
+                    <div class="">
+                        <div class="lg:text-center">
+
+                            <h2 class="py-10 text-base text-2xl text-white font-semibold tracking-wide">Fijnstof in Veenendaal</h2>
 
 
-                        @if($pm2 > config('fijnstof.pm2_bovengrens') || $pm10 > config('fijnstof.pm10_bovengrens'))
-                        <p class="mt-2 leading-8 font-extrabold tracking-tight text-red-700 text-3xl md:text-4xl lg:text-5xl">
-                            De fijnstof-concentratie is te hoog
-                        </p>
-                        @else
-                        <p class="mt-2 leading-8 font-extrabold tracking-tight text-green-400 text-3xl md:text-4xl lg:text-5xl">
-                            De fijnstof-concentratie is in orde
-                        </p>
-                        @endif
+                                @if($pm2 > config('fijnstof.pm2_bovengrens') || $pm10 > config('fijnstof.pm10_bovengrens'))
+                                <p class="mt-2 leading-8 font-extrabold tracking-tight text-red-700 text-3xl md:text-4xl lg:text-5xl">
+                                    De fijnstof-concentratie is te hoog
+                                </p>
+                                @else
+                                <p class="mt-2 leading-8 font-extrabold tracking-tight text-green-400 text-3xl md:text-4xl lg:text-5xl">
+                                    De fijnstof-concentratie is in orde
+                                </p>
+                                @endif
 
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                        <br /><br />
-                    </p>
-                </div>
+                            <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                                <br /><br />
+                            </p>
+                        </div>
+                    </div>
+                </dl>
 
                 <div class="mt-10">
                     <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
@@ -52,8 +60,9 @@
                             </dt>
                             <dd class="mt-2 ml-16 text-base text-gray-100">
                                 De fijnstofmetingen worden door een aantal vrijwilligers in Veenendaal uitgevoerd met behulp van
-                                het <a href="https://www.samenmetenaanluchtkwaliteit.nl/sensorcommunity" class="text-gray-400">Sensor.community fijnstofmeetapparaat</a>.
-                                Deze website neemt de gemiddelde waarde van de laatste metingen en geeft op basis van de RIVM-grenzen aan of deze
+                                het <a href="https://www.samenmetenaanluchtkwaliteit.nl/sensorcommunity" class="text-gray-400">Sensor.community fijnstofmeetapparaat</a>,
+                                die ze tijdens een workshop van het <a href="https://www.bibliotheekveenendaal.nl/leren/FabLab.html" class="text-gray-400">FabLab Veenendaal</a> gebouwd hebben.
+                                <br />Deze website berekent het gemiddelde van de laatste metingen en geeft op basis van de RIVM-grenzen aan of deze
                                 waarden acceptabel zijn. De (gemiddelde) laatst gemeten waarden zijn:<br /><br />
                                 Laatst gemeten waarde PM2.5: <b>{{ round($pm2, 2) }} &mu;g/m<sup>3</sup></b><br />
                                 Laatst gemeten waarde PM10: <b>{{ round($pm10, 2) }} &mu;g/m<sup>3</sup></b>
@@ -92,8 +101,7 @@
                             </dt>
                             <dd class="mt-2 ml-16 text-base text-gray-100">
                                 Wil je ook meemeten? Dat kan! Bestel <a href="https://sensor.community/nl/sensors/" class="text-gray-400">een kit op de website van Sensor.community</a>, en hang deze op binnen Veenendaal. Je sensor
-                                wordt dan automatisch opgenomen in de berekeningen op deze site. Als je een mail stuurt aan info@de-url-van-deze-site.nl dan krijg
-                                je ook toegang tot de gebruikersgroep in Veenendaal.
+                                wordt dan automatisch opgenomen in de berekeningen op deze site.
                             </dd>
                         </div>
 
@@ -126,9 +134,11 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
-                    <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-5 md:gap-x-8 md:gap-y-10">
-                        <div class="relative">
-
+                    <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-4 md:gap-x-8 md:gap-y-10">
+                        <div class="relative absolute flex items-center justify-center">
+                            <a href="https://www.bibliotheekveenendaal.nl/leren/FabLab.html" target="_blank">
+                                <img src="/img/fablab.png" style="width: 110px" />
+                            </a>
                         </div>
                         <div class="relative absolute flex items-center justify-center">
                             <a href="https://www.influxdata.com/" target="_blank">
