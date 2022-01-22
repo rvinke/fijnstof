@@ -12,15 +12,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="shortcut icon" href="/img/favicon.ico" />
+
     </head>
     <body class="antialiased bg-gray-100 dark:bg-gray-900">
 
-
-        <!-- This example requires Tailwind CSS v2.0+ -->
-        <div class="py-12 bg-gray">
+        <div class="py-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="lg:text-center">
-                    <h2 class="text-base text-white font-semibold tracking-wide">Fijnstof in Veenendaal:</h2>
+                    <h2 class="py-10 text-base text-2xl text-white font-semibold tracking-wide">Fijnstof in Veenendaal</h2>
 
 
                         @if($pm2 > config('fijnstof.pm2_bovengrens') || $pm10 > config('fijnstof.pm10_bovengrens'))
@@ -73,9 +73,9 @@
                             <dd class="mt-2 ml-16 text-base text-gray-100">
                                 Er wordt op dit moment een
                                 @if($trend_up)
-                                    <span class="text-red-600 font-semibold">toenemende</span> concentratie fijnstof waargenomen. Dat betekent dat de hoeveelheid fijnstof aan het toenemen is op dit moment.
+                                    <span class="text-red-600 font-semibold">toenemende</span> concentratie fijnstof waargenomen. Dat betekent dat de hoeveelheid fijnstof in de lucht aan het toenemen is op dit moment.
                                 @else
-                                    <span class="text-green-400">afnemende</span> concentratie fijnstof waargenomen. Dat betekent dat de hoeveelheid fijnstof aan het afnemen is op dit moment.
+                                    <span class="text-green-400">afnemende</span> concentratie fijnstof waargenomen. Dat betekent dat de hoeveelheid fijnstof in de lucht aan het afnemen is op dit moment.
                                 @endif
                             </dd>
                         </div>
@@ -120,6 +120,37 @@
                     </dl>
                 </div>
             </div>
+        </div>
+
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div>
+                    <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-5 md:gap-x-8 md:gap-y-10">
+                        <div class="relative">
+
+                        </div>
+                        <div class="relative absolute flex items-center justify-center">
+                            <a href="https://www.influxdata.com/" target="_blank">
+                            <img src="/img/influxdb.png" style="width: 140px" />
+                            </a>
+                        </div>
+                        <div class="relative absolute flex items-center justify-center">
+                            <a href="https://www.laravel.com" target="_blank">
+                            <img src="/img/laravel.png" style="width: 100px" />
+                            </a>
+                        </div>
+                        <div class="relative absolute flex items-center justify-center">
+                            <a href="http://www.ronaldvinke.nl" target="_blank">
+                            <img src="/img/ronaldvinke.png" style="width: 100px" />
+                            </a>
+                        </div>
+                        <div class="relative">
+
+                        </div>
+                    </dl>
+                </div>
+            </dl>
         </div>
     </body>
 </html>
