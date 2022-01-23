@@ -69,7 +69,7 @@ class SensorController extends Controller
         $parameters = $regression->getParameters();
 
         $trend_up = false;
-        
+
         //if(array_sum($trend) > 0) {
         if($parameters['m'] > 0) {
             $trend_up = true;

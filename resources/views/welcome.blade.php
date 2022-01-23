@@ -33,6 +33,10 @@
                                 <p class="mt-2 leading-8 font-extrabold tracking-tight text-red-700 text-3xl md:text-4xl lg:text-5xl">
                                     De fijnstof-concentratie is te hoog
                                 </p>
+                                @elseif($pm2 > config('fijnstof.pm2_middengrens') || $pm10 > config('fijnstof.pm10_middengrens'))
+                                <p class="mt-2 leading-8 font-extrabold tracking-tight text-orange-400 text-3xl md:text-4xl lg:text-5xl">
+                                    De fijnstof-concentratie is matig
+                                </p>
                                 @else
                                 <p class="mt-2 leading-8 font-extrabold tracking-tight text-green-400 text-3xl md:text-4xl lg:text-5xl">
                                     De fijnstof-concentratie is oké
