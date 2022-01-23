@@ -59,13 +59,12 @@
                                 <p class="ml-16 text-lg leading-6 font-medium text-gray-100">Fijnstofmetingen</p>
                             </dt>
                             <dd class="mt-2 ml-16 text-base text-gray-100">
-                                De fijnstofmetingen worden door een aantal vrijwilligers in Veenendaal uitgevoerd met behulp van
-                                het <a href="https://www.samenmetenaanluchtkwaliteit.nl/sensorcommunity" class="text-gray-400">Sensor.community fijnstofmeetapparaat</a>,
-                                die ze tijdens een workshop van het <a href="https://www.bibliotheekveenendaal.nl/leren/FabLab.html" class="text-gray-400">FabLab Veenendaal</a> gebouwd hebben.
-                                <br />Deze website berekent het gemiddelde van de laatste metingen en geeft op basis van de RIVM-grenzen aan of deze
-                                waarden acceptabel zijn. De (gemiddelde) laatst gemeten waarden zijn:<br /><br />
-                                Laatst gemeten waarde PM2.5: <b>{{ round($pm2, 1) }} &mu;g/m<sup>3</sup></b><br />
-                                Laatst gemeten waarde PM10: <b>{{ round($pm10, 1) }} &mu;g/m<sup>3</sup></b>
+                                Fijnstof betreft kleine (stof)deeltjes in de lucht, in het geval van PM10 gaat het om deeltjes die kleiner zijn dan 10 micrometer,
+                                en PM2.5 betreft deeltjes die kleiner zijn dan 2.5 micrometer. Bronnen van deze deeltjes zijn soms natuurlijk (zoals stof vanaf de Veluwe),
+                                maar vaak ook van wegverkeer (remstof) of verbrandingsprocessen (zoals openhaarden en kachels). <br />
+                                Langdurige blootstelling aan verhoogde concentraties fijnstof heeft een negatief effect op de gezondheid. Vooral mensen met COPD heeft veel
+                                last van fijnstof. Het RIVM heeft normen vastgesteld op basis waarvan vastgesteld wordt of de concentratie te hoog is. Voor PM10 is deze grens 40 &mu;g en
+                                voor PM2.5 25 &mu;g.
                             </dd>
                         </div>
 
@@ -116,12 +115,13 @@
                                 <p class="ml-16 text-lg leading-6 font-medium text-gray-100">Aanvullende uitleg</p>
                             </dt>
                             <dd class="mt-2 ml-16 text-base text-gray-100">
-                                Fijnstof betreft kleine (stof)deeltjes in de lucht, in het geval van PM10 gaat het om deeltjes die kleiner zijn dan 10 micrometer,
-                                en PM2.5 betreft deeltjes die kleiner zijn dan 2.5 micrometer. Bronnen van deze deeltjes zijn soms natuurlijk (zoals stof vanaf de Veluwe),
-                                maar vaak ook van wegverkeer (remstof) of verbrandingsprocessen (zoals openhaarden en kachels). <br />
-                                Langdurige blootstelling aan verhoogde concentraties fijnstof heeft een negatief effect op de gezondheid. Vooral mensen met COPD heeft veel
-                                last van fijnstof. Het RIVM heeft normen vastgesteld op basis waarvan vastgesteld wordt of de concentratie te hoog is. Voor PM10 is deze grens 40 &mu;g en
-                                voor PM2.5 25 &mu;g.
+                                De fijnstofmetingen worden door een aantal vrijwilligers in Veenendaal uitgevoerd met behulp van
+                                het <a href="https://www.samenmetenaanluchtkwaliteit.nl/sensorcommunity" class="text-gray-400">Sensor.community fijnstofmeetapparaat</a>,
+                                die ze tijdens een workshop van het <a href="https://www.bibliotheekveenendaal.nl/leren/FabLab.html" class="text-gray-400">FabLab Veenendaal</a> gebouwd hebben.
+                                <br />Deze website berekent het gemiddelde van de laatste metingen en geeft op basis van de RIVM-grenzen aan of deze
+                                waarden acceptabel zijn. De (gemiddelde) laatst gemeten waarden zijn:<br /><br />
+                                Laatst gemeten waarde PM2.5: <b>{{ round($pm2, 1) }} &mu;g/m<sup>3</sup></b><br />
+                                Laatst gemeten waarde PM10: <b>{{ round($pm10, 1) }} &mu;g/m<sup>3</sup></b>
                             </dd>
                         </div>
 
