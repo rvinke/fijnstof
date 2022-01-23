@@ -88,6 +88,8 @@ class FetchData extends Command
         $write_api->write('pm10,sensor_id=web value='.$pm10_value);
         $write_api->write('pm10_sensor_count,sensor_id=web value='.$pm10_sensor_count);
         $this->info('Data opgeslagen');
+
+        @file_get_contents('https://ping.ohdear.app/e536e771-9ff6');
     }
 
     private function doRequest($url)
