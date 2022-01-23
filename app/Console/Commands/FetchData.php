@@ -49,34 +49,44 @@ class FetchData extends Command
 
         $o = json_decode($result);
 
+        $sensor_done = [];
+
         foreach($o as $record) {
 
-            foreach($record->sensordatavalues as $val) {
-                if($val->value_type == 'P1') {
-                    $pm10[] = (double) $val->value;
-                }
+            if(!in_array($record->sensor->id, $sensor_done)) { //voorkomen dat sensoren dubbel opgenomen worden
 
-                if($val->value_type == 'P2') {
-                    $pm2[] = (double) $val->value;
+                foreach ($record->sensordatavalues as $val) {
+                    if ($val->value_type == 'P1') {
+                        $pm10[] = (double)$val->value;
+                    }
+
+                    if ($val->value_type == 'P2') {
+                        $pm2[] = (double)$val->value;
+                    }
                 }
             }
 
+            $sensor_done[] = $record->sensor->id;
 
 
         }
 
         $pm10 = $this->remove_outliers($pm10, 2);
         //var_dump($pm10);
+        $pm10_sensor_count = count($pm10);
         $pm10_value = array_sum($pm10)/count($pm10);
         $this->info('PM10: '.$pm10_value);
         $pm2 = $this->remove_outliers($pm2, 2);
         //var_dump($pm2);
+        $pm2_sensor_count = count($pm2);
         $pm2_value = array_sum($pm2)/count($pm2);
         $this->info('PM2.5: '.$pm2_value);
 
         $write_api = InfluxDB::createWriteApi();
         $write_api->write('pm2,sensor_id=web value='.$pm2_value);
+        $write_api->write('pm2_sensor_count,sensor_id=web value='.$pm2_sensor_count);
         $write_api->write('pm10,sensor_id=web value='.$pm10_value);
+        $write_api->write('pm10_sensor_count,sensor_id=web value='.$pm10_sensor_count);
         $this->info('Data opgeslagen');
     }
 

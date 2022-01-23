@@ -20,10 +20,10 @@
         <div class="py-12 bg-gray-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <dl class="flex flex-row">
-                    <div class="relative basis-1/4 items-center justify-center h-12 w-12">
-                        <img src="/img/logo.png" style="width: 100px; margin-top: 40px; margin-left: 80px;" />
+                    <div class="basis-1/4">
+                        <img src="/img/logo.png" class="w-1/2 my-4 lg:mx-10 lg:my-7" />
                     </div>
-                    <div class="">
+                    <div class="basis-3/4">
                         <div class="lg:text-center">
 
                             <h2 class="py-10 text-base text-2xl text-white font-semibold tracking-wide">Fijnstof in Veenendaal</h2>
@@ -134,7 +134,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
-                    <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-4 md:gap-x-8 md:gap-y-10">
+                    <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-5 md:gap-x-8 md:gap-y-10">
                         <div class="relative absolute flex items-center justify-center">
                             <a href="https://www.bibliotheekveenendaal.nl/leren/FabLab.html" target="_blank">
                                 <img src="/img/fablab.png" style="width: 110px" />
@@ -155,8 +155,10 @@
                             <img src="/img/ronaldvinke.png" style="width: 100px" />
                             </a>
                         </div>
-                        <div class="relative">
-
+                        <div class="relative absolute flex items-center justify-center">
+                            <a href="https://www.duurzaamveenendaal.nl/default.aspx" target="_blank">
+                                <img src="/img/sdv.png" style="width: 100px" />
+                            </a>
                         </div>
                     </dl>
                 </div>
