@@ -85,6 +85,10 @@
                                 @else
                                     <span class="text-green-400">afnemende</span> concentratie fijnstof waargenomen. Dat betekent dat de hoeveelheid fijnstof in de lucht aan het afnemen is op dit moment.
                                 @endif
+                                <br />Deze website berekent het gemiddelde van de laatste metingen en geeft op basis van de RIVM-grenzen aan of deze
+                                waarden acceptabel zijn. De (gemiddelde) laatst gemeten waarden zijn:<br /><br />
+                                Laatst gemeten waarde PM2.5: <b>{{ round($pm2, 1) }} &mu;g/m<sup>3</sup></b><br />
+                                Laatst gemeten waarde PM10: <b>{{ round($pm10, 1) }} &mu;g/m<sup>3</sup></b>
                             </dd>
                         </div>
 
@@ -118,10 +122,6 @@
                                 De fijnstofmetingen worden door een aantal vrijwilligers in Veenendaal uitgevoerd met behulp van
                                 het <a href="https://www.samenmetenaanluchtkwaliteit.nl/sensorcommunity" class="text-gray-400">Sensor.community fijnstofmeetapparaat</a>,
                                 die ze tijdens een workshop van het <a href="https://www.bibliotheekveenendaal.nl/leren/FabLab.html" class="text-gray-400">FabLab Veenendaal</a> gebouwd hebben.
-                                <br />Deze website berekent het gemiddelde van de laatste metingen en geeft op basis van de RIVM-grenzen aan of deze
-                                waarden acceptabel zijn. De (gemiddelde) laatst gemeten waarden zijn:<br /><br />
-                                Laatst gemeten waarde PM2.5: <b>{{ round($pm2, 1) }} &mu;g/m<sup>3</sup></b><br />
-                                Laatst gemeten waarde PM10: <b>{{ round($pm10, 1) }} &mu;g/m<sup>3</sup></b>
                             </dd>
                         </div>
 
