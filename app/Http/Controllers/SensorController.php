@@ -6,6 +6,7 @@ use amantinetti\InfluxDB\Facades\InfluxDB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Ixudra\Curl\CurlService;
+use MathPHP\Statistics\Regression\Linear;
 
 class SensorController extends Controller
 {
@@ -45,11 +46,14 @@ class SensorController extends Controller
             |> filter(fn: (r) => r["sensor_id"] == "web")
             |> movingAverage(n: 30)');
 
+        $i = 1;
+        $val_trend = [];
         foreach($result_pm10_trend[0]->records as $item) {
-            $val_trend[] = $item->values["_value"];
+            $val_trend[] = [$i, $item->values["_value"]];
+            $i++;
         }
 
-        $trend = [];
+        /*$trend = [];
         foreach($val_trend as $i => $item) {
 
             if($i != count($val_trend)-1) {
@@ -60,10 +64,14 @@ class SensorController extends Controller
                 }
             }
 
-        }
+        }*/
+        $regression = new Linear($val_trend);
+        $parameters = $regression->getParameters();
 
         $trend_up = false;
-        if(array_sum($trend) > 0) {
+        
+        //if(array_sum($trend) > 0) {
+        if($parameters['m'] > 0) {
             $trend_up = true;
         }
 
