@@ -11,34 +11,25 @@ use MathPHP\Statistics\Regression\Linear;
 class SensorController extends Controller
 {
     var $debug = true;
+    var $query_api;
 
     public function index()
     {
-        $query_api = InfluxDB::createQueryApi();
+        $this->query_api = InfluxDB::createQueryApi();
 
-        $result_pm10 = $query_api->query('
-            from(bucket:"fijnstof")
-            |> range(start: 1970-01-01T00:00:00.000000001Z)
-            |> filter(fn: (r) => r["_measurement"] == "pm10")
-            |> filter(fn: (r) => r["_field"] == "value")
-            |> filter(fn: (r) => r["sensor_id"] == "web")
-            |> last()');
+        $pm10['value'] = $this->getInfluxData('pm10');
+        $pm10['max'] = $this->getInfluxData('pm10_max');
+        $pm10['min'] = $this->getInfluxData('pm10_min');
 
-        $pm10_value = $result_pm10[0]->records[0]->values['_value'];
+        $pm2['value'] = $this->getInfluxData('pm2');
+        $pm2['max'] = $this->getInfluxData('pm2_max');
+        $pm2['min'] = $this->getInfluxData('pm2_min');
 
-        $result_pm2 = $query_api->query('
-            from(bucket:"fijnstof")
-            |> range(start: 1970-01-01T00:00:00.000000001Z)
-            |> filter(fn: (r) => r["_measurement"] == "pm2")
-            |> filter(fn: (r) => r["_field"] == "value")
-            |> filter(fn: (r) => r["sensor_id"] == "web")
-            |> last()');
 
-        $pm2_value = $result_pm2[0]->records[0]->values['_value'];
 
         $date = Carbon::now()->subHours(1)->toISOString();
 
-        $result_pm10_trend = $query_api->query('
+        $result_pm10_trend = $this->query_api->query('
             from(bucket:"fijnstof")
             |> range(start: '.$date.')
             |> filter(fn: (r) => r["_measurement"] == "pm10")
@@ -53,20 +44,11 @@ class SensorController extends Controller
             $i++;
         }
 
-        /*$trend = [];
-        foreach($val_trend as $i => $item) {
-
-            if($i != count($val_trend)-1) {
-                if ($item > $val_trend[$i + 1]) {
-                    $trend[] = -1;
-                } else {
-                    $trend[] = 1;
-                }
-            }
-
-        }*/
-        $regression = new Linear($val_trend);
-        $parameters = $regression->getParameters();
+        $parameters['m'] = 0;//default
+        if(count($val_trend) > 20) {
+            $regression = new Linear($val_trend);
+            $parameters = $regression->getParameters();
+        }
 
         $trend_up = false;
 
@@ -77,11 +59,25 @@ class SensorController extends Controller
 
 
         return view('welcome')
-            ->with('pm10', $pm10_value)
-            ->with('pm2', $pm2_value)
+            ->with('pm10', $pm10)
+            ->with('pm2', $pm2)
             ->with('trend_up', $trend_up);
     }
 
+
+    private function getInfluxData($field)
+    {
+        $result = $this->query_api->query('
+            from(bucket:"fijnstof")
+            |> range(start: 2022-01-01T00:00:00.000000001Z)
+            |> filter(fn: (r) => r["_measurement"] == "'.$field.'")
+            |> filter(fn: (r) => r["_field"] == "value")
+            |> filter(fn: (r) => r["sensor_id"] == "web")
+            |> last()');
+
+        return $result[0]->records[0]->values['_value'];
+
+    }
 
 
 }

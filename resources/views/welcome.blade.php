@@ -29,11 +29,11 @@
                             <h2 class="py-10 text-base text-2xl text-white font-semibold tracking-wide">Fijnstof in Veenendaal</h2>
 
 
-                                @if($pm2 > config('fijnstof.pm2_bovengrens') || $pm10 > config('fijnstof.pm10_bovengrens'))
+                                @if($pm2['value'] > config('fijnstof.pm2_bovengrens') || $pm10['value'] > config('fijnstof.pm10_bovengrens'))
                                 <p class="mt-2 leading-8 font-extrabold tracking-tight text-red-700 text-3xl md:text-4xl lg:text-5xl">
                                     De fijnstof-concentratie is te hoog
                                 </p>
-                                @elseif($pm2 > config('fijnstof.pm2_middengrens') || $pm10 > config('fijnstof.pm10_middengrens'))
+                                @elseif($pm2['value'] > config('fijnstof.pm2_middengrens') || $pm10['value'] > config('fijnstof.pm10_middengrens'))
                                 <p class="mt-2 leading-8 font-extrabold tracking-tight text-orange-400 text-3xl md:text-4xl lg:text-5xl">
                                     De fijnstof-concentratie is matig
                                 </p>
@@ -66,7 +66,7 @@
                                 Fijnstof betreft kleine (stof)deeltjes in de lucht, in het geval van PM10 gaat het om deeltjes die kleiner zijn dan 10 micrometer,
                                 en PM2.5 betreft deeltjes die kleiner zijn dan 2.5 micrometer. Bronnen van deze deeltjes zijn soms natuurlijk (zoals stof vanaf de Veluwe),
                                 maar vaak ook van wegverkeer (remstof) of verbrandingsprocessen (zoals openhaarden en kachels). <br />
-                                Langdurige blootstelling aan verhoogde concentraties fijnstof heeft een negatief effect op de gezondheid. Vooral mensen met COPD heeft veel
+                                Langdurige blootstelling aan verhoogde concentraties fijnstof heeft een negatief effect op de gezondheid. Vooral mensen met COPD hebben veel
                                 last van fijnstof. Het RIVM heeft normen vastgesteld op basis waarvan vastgesteld wordt of de concentratie te hoog is. Voor PM10 is deze grens 40 &mu;g en
                                 voor PM2.5 25 &mu;g.
                             </dd>
@@ -91,8 +91,10 @@
                                 @endif
                                 <br />Deze website berekent het gemiddelde van de laatste metingen en geeft op basis van de RIVM-grenzen aan of deze
                                 waarden acceptabel zijn. De (gemiddelde) laatst gemeten waarden zijn:<br /><br />
-                                Laatst gemeten waarde PM2.5: <b>{{ round($pm2, 1) }} &mu;g/m<sup>3</sup></b><br />
-                                Laatst gemeten waarde PM10: <b>{{ round($pm10, 1) }} &mu;g/m<sup>3</sup></b>
+                                Laatst gemeten PM2.5: <b>{{ round($pm2['value'], 1) }} &mu;g/m<sup>3</sup></b> <span class="text-xs  tracking-tight">(max: {{ round($pm2['max'], 1) }} &mu;g/m<sup>3</sup>, min: {{ round($pm2['min'], 1)}}  &mu;g/m<sup>3</sup>)</span><br /><br />
+                                Laatst gemeten PM10: <b>{{ round($pm10['value'], 1) }} &mu;g/m<sup>3</sup></b> <span class="text-xs  tracking-tight">(max: {{ round($pm10['max'], 1) }} &mu;g/m<sup>3</sup>, min: {{ round($pm10['min'], 1)}}  &mu;g/m<sup>3</sup>)</span>
+                                <br /><br />
+                                <a href="http://deutschland.maps.sensor.community/#14/52.0210/5.5588" target="_blank" class="text-gray-400">Bekijk hier de status per sensor.</a>
                             </dd>
                         </div>
 

@@ -75,11 +75,15 @@ class FetchData extends Command
         //var_dump($pm10);
         $pm10_sensor_count = count($pm10);
         $pm10_value = array_sum($pm10)/count($pm10);
+        $pm10_max = max($pm10);
+        $pm10_min = min($pm10);
         $this->info('PM10: '.$pm10_value);
         $pm2 = $this->remove_outliers($pm2, 2);
         //var_dump($pm2);
         $pm2_sensor_count = count($pm2);
         $pm2_value = array_sum($pm2)/count($pm2);
+        $pm2_max = max($pm2);
+        $pm2_min = min($pm2);
         $this->info('PM2.5: '.$pm2_value);
 
         $write_api = InfluxDB::createWriteApi();
@@ -87,6 +91,10 @@ class FetchData extends Command
         $write_api->write('pm2_sensor_count,sensor_id=web value='.$pm2_sensor_count);
         $write_api->write('pm10,sensor_id=web value='.$pm10_value);
         $write_api->write('pm10_sensor_count,sensor_id=web value='.$pm10_sensor_count);
+        $write_api->write('pm10_max,sensor_id=web value='.$pm10_max);
+        $write_api->write('pm10_min,sensor_id=web value='.$pm10_min);
+        $write_api->write('pm2_max,sensor_id=web value='.$pm2_max);
+        $write_api->write('pm2_min,sensor_id=web value='.$pm2_min);
         $this->info('Data opgeslagen');
 
         @file_get_contents('https://ping.ohdear.app/d604fab7-3129-4f9c-820c-a049dbd93b29');
